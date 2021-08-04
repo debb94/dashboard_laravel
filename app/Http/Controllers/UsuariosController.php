@@ -10,29 +10,19 @@ use Illuminate\Support\Facades\Crypt;
 
 class UsuariosController extends MyController{
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $users = UsuariosModel::all();
             $data = array();
             $data['users'] = $users;
             return view("usuarios",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $data = array();
             $data['screen'] = "Crear Usuario";
             $data['estados'] = [
@@ -45,20 +35,13 @@ class UsuariosController extends MyController{
                 "Cliente"       => "Cliente"
             ];
             return view("usuarioscreate",$data);
-        // }else{
-        //     return redirect("/");
-        // }
-        
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $user = $request->all();
             $request->validate([
                 "usuario_nombre1"       => "required|min:2",
@@ -78,37 +61,25 @@ class UsuariosController extends MyController{
             $data = array();
             $data['users'] = $users;
             return view("usuarios",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $users = UsuariosModel::find($id);
             $data = array();
             $data['user'] = $users;
             $data['screen'] = "Ver usuario - ".$users["usuario_nombre1"]." ".$users["usuario_apellido1"];
             return view("usuariosview",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $users = UsuariosModel::find($id);
             $data = array();
             $data['user'] = $users;
@@ -124,20 +95,13 @@ class UsuariosController extends MyController{
                 "Cliente"       => "Cliente"
             ];
             return view("usuariosedit",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $user = $request->all();
 
             $request->validate([
@@ -155,28 +119,22 @@ class UsuariosController extends MyController{
             $data = array();
             $data['users'] = $users;
             return view("usuarios",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id){
-        // if($this->checkSession()){
+        if($this->checkSession()){
             $user = UsuariosModel::find($id);
             $user->delete();
-            
+
             $users = UsuariosModel::all();
             $data = array();
             $data['users'] = $users;
             return view("usuarios",$data);
-        // }else{
-        //     return redirect("/");
-        // }
+        }else{
+            return redirect("/");
+        }
     }
 }

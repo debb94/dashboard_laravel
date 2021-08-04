@@ -24,5 +24,4 @@ class UsuariosModel extends Model
         "usuario_rol",
         "usuario_estado"
     ];
-
 }
