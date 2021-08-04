@@ -10,4 +10,8 @@ Dashboard sencillo hecho en Laravel 8.x como base para proyectos mas robustos, c
  `php artisan serve`
  4. Paso: Ir en el navegador a http://localhost:8000
 
+## Login Dashboard
+- **Usuario:** daniel.bolivar.freelance@gmail.com
+- **Contraseña:** 12345678
+
 
